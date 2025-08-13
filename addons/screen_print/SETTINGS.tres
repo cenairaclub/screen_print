@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Screen_Print_Settings" load_steps=2 format=3 uid="uid://b0eive0lncr6k"]
+
+[ext_resource type="Script" uid="uid://dfevacopkrdfc" path="res://addons/screen_print/settings.gd" id="1_27a7v"]
+
+[resource]
+script = ExtResource("1_27a7v")
+FONT_SIZE = 19
+EDITOR_ONLY_MESSAGES = true
+HIDE_ALL_MESSAGES = false
+metadata/_custom_type_script = "uid://dfevacopkrdfc"
