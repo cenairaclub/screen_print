@@ -22,7 +22,8 @@ func _ready():
 	message_container.set_anchors_and_offsets_preset(Control.PRESET_TOP_LEFT)
 	message_container.position = Vector2(10, 10)  # 10px inside of the Top Left
 	canvas_layer.add_child(message_container)
-func print(message: String, color: Color = Color.CYAN, time: float = 3.0, tag: String = "") -> void:
+## Prints on-screen debug message.
+func print(message: Variant, color: Color = Color.CYAN, time: float = 3.0, tag: String = "") -> void:
 	if settings.HIDE_ALL_MESSAGES:
 		return
 
@@ -34,16 +35,16 @@ func print(message: String, color: Color = Color.CYAN, time: float = 3.0, tag: S
 
 		# If there is a message with the same tag, update the previous message.
 		if message_labels.has(tag):
-			_update_message(tag, message, color, time)
+			_update_message(tag, str(message), color, time)
 		else:
-			_create_message(tag, message, color, time)
+			_create_message(tag, str(message), color, time)
 func _create_message(tag: String, message: String, color: Color, time: float):
 	# Create a label
 	var label = Label.new()
 	label.text = message
 	label.modulate = color
 	label.add_theme_font_size_override("font_size", settings.FONT_SIZE)
-
+	label.add_theme_constant_override("outline_size", settings.FONT_OUTLINE_SIZE)
 	# add to the Container
 	message_container.add_child(label)
 	message_labels[tag] = label
@@ -81,12 +82,12 @@ func _on_message_timeout(tag: String):
 		timer.queue_free()
 		message_timers.erase(tag)
 
-# Clear all the messages
+## Clear all the messages
 func clear_all():
 	for tag in message_labels.keys():
 		_on_message_timeout(tag)
 
-# Cleans a certain message
+## Cleans a certain message
 func clear(tag: String):
 	if message_labels.has(tag):
 		_on_message_timeout(tag)

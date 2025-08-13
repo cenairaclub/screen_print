@@ -2,6 +2,8 @@ extends Resource
 class_name Screen_Print_Settings
 ## font size of screen messages
 @export var FONT_SIZE : int = 19
+## font size of screen messages
+@export var FONT_OUTLINE_SIZE : int = 5
 ## should show just with editor
 @export var EDITOR_ONLY_MESSAGES : bool = true
 ## prevents the printing.
