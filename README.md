@@ -4,6 +4,7 @@ A Godot Addon for Screen Debug Messages like Unreal Engine. Messages can have co
 <img width="548" height="240" alt="image" src="https://github.com/user-attachments/assets/534fc9ef-654d-4563-bea8-62eda4e0edbf" />
 
 Functions->
+# Call Screen.print()
 # Prints message to screen
 `func print(message: String, color: Color = Color.CYAN, time: float = 3.0, tag: String = "")`
 
